@@ -40,6 +40,7 @@
     "docker:logs": "docker compose -p sb-prod -f deployment/compose.yml logs -f sb_api"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "0.115.0",
     "@fastify/cors": "11.2.0",
     "@fastify/swagger": "9.6.1",
     "@fastify/swagger-ui": "5.2.5",

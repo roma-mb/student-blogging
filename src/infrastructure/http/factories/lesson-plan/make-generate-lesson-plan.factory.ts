@@ -1,7 +1,13 @@
+import Anthropic from '@anthropic-ai/sdk';
 import { GenerateLessonPlan } from '@application/lesson-plan';
-import { StubLessonPlanProvider } from '@infrastructure/providers/ai';
+import { ClaudeLessonPlanProvider } from '@infrastructure/providers/ai';
+import { env } from '@shared/env';
 
 export function makeGenerateLessonPlan(): GenerateLessonPlan {
-  const aiLessonPlanProvider = new StubLessonPlanProvider();
+  const client = new Anthropic({ apiKey: env.ANTHROPIC_API_KEY });
+  const aiLessonPlanProvider = new ClaudeLessonPlanProvider(
+    client,
+    env.ANTHROPIC_MODEL
+  );
   return new GenerateLessonPlan(aiLessonPlanProvider);
 }

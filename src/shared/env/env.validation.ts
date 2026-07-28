@@ -25,7 +25,9 @@ const envSchema = z.object({
   GF_SERVER_ROOT_URL: z.url({
     message: translate(ENVIRONMENT.GRAFANA.ERRORS.SERVER_ROOT_URL)
   }),
-  JWT_SECRET: z.string().min(32)
+  JWT_SECRET: z.string().min(32),
+  ANTHROPIC_API_KEY: z.string().min(1),
+  ANTHROPIC_MODEL: z.string().default('claude-opus-5')
 });
 
 type Env = z.infer<typeof envSchema>;
